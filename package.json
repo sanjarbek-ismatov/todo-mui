@@ -1,0 +1,7 @@
+{
+  "name": "todo-mui",
+  "version": "1.0.0",
+  "description": "This is todo app with mui",
+  "main": "index.js",
+  "license": "MIT"
+}
