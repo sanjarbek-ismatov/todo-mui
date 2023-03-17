@@ -1,1 +1,2 @@
-export { default as CenteredBox } from "./CenteredBox";
+export { default as AuthLeftSide } from "./AuthLeftSide";
+export { default as AuthRightSide } from "./AuthRightSide";

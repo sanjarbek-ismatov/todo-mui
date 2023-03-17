@@ -1,11 +1,22 @@
-import { Button } from "@mui/material";
-import { CenteredBox } from "./components";
+import { AuthLeftSide, AuthRightSide } from "./components";
+import { Box } from "@mui/material";
 function App() {
   return (
-    <CenteredBox>
-      <h1>Hello</h1>
-      <Button variant="contained">Hello click me!</Button>
-    </CenteredBox>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexWrap: "wrap",
+        alignItems: "center",
+        width: "100%",
+        height: "100vh",
+        backgroundColor: "background.default",
+        color: "text.primary",
+      }}
+    >
+      <AuthLeftSide />
+      <AuthRightSide />
+    </Box>
   );
 }
 

@@ -5,5 +5,18 @@ import "@fontsource/roboto/700.css";
 import "./index.css";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import { createTheme, ThemeProvider } from "@mui/material";
 const root = createRoot(document.getElementById("root") as HTMLDivElement);
-root.render(<App />);
+function Index() {
+  const theme = createTheme({
+    palette: {
+      mode: "light",
+    },
+  });
+  return (
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  );
+}
+root.render(<Index />);
