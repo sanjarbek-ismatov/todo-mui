@@ -8,21 +8,28 @@ import App from "./App";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Auth from "./Auth";
+import { Provider } from "./context/theme";
 const root = createRoot(document.getElementById("root") as HTMLDivElement);
 function Index() {
-  const theme = createTheme({
-    palette: {
-      mode: "light",
-    },
-  });
+  // const darkTheme = createTheme({
+  //   palette: {
+  //     mode: "dark",
+  //   },
+  // });
+  // const lightTheme = createTheme({
+  //   palette: {
+  //     mode: "light",
+  //   },
+  // });
   return (
     <Router>
-      <ThemeProvider theme={theme}>
-        <Routes>
+      <Provider>
+        {/* <Routes>
           <Route path="/" element={<App />} />
           <Route path="/auth" element={<Auth />} />
-        </Routes>
-      </ThemeProvider>
+        </Routes> */}
+        <App />
+      </Provider>
     </Router>
   );
 }
