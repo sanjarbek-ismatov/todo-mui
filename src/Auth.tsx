@@ -6,10 +6,10 @@ function Auth() {
       sx={{
         display: "flex",
         justifyContent: "center",
-        flexWrap: "wrap",
         alignItems: "center",
+        flexWrap: "wrap",
         width: "100%",
-        height: "100vh",
+        minHeight: "100vh",
         backgroundColor: "background.default",
         color: "text.primary",
       }}

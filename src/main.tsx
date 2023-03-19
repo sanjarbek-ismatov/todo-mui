@@ -11,23 +11,9 @@ import Auth from "./Auth";
 import { Provider } from "./context/theme";
 const root = createRoot(document.getElementById("root") as HTMLDivElement);
 function Index() {
-  // const darkTheme = createTheme({
-  //   palette: {
-  //     mode: "dark",
-  //   },
-  // });
-  // const lightTheme = createTheme({
-  //   palette: {
-  //     mode: "light",
-  //   },
-  // });
   return (
     <Router>
       <Provider>
-        {/* <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/auth" element={<Auth />} />
-        </Routes> */}
         <App />
       </Provider>
     </Router>

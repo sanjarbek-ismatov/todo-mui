@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import styled from "styled-components";
 const WhiteHole = styled.div`
   width: 30px;
@@ -8,7 +8,7 @@ const WhiteHole = styled.div`
   margin: 50px;
 `;
 const Container = styled.div`
-  margin: 0 10px;
+  margin: 0 50px 0 0;
 `;
 const ContainerList = styled.div`
   display: flex;
@@ -18,18 +18,6 @@ const ContainerList = styled.div`
 const AuthLeftSide = () => {
   return (
     <Container>
-      <ContainerList>
-        <WhiteHole />
-        <WhiteHole />
-        <WhiteHole />
-        <WhiteHole />
-      </ContainerList>
-      <ContainerList>
-        <WhiteHole />
-        <WhiteHole />
-        <WhiteHole />
-        <WhiteHole />
-      </ContainerList>
       <ContainerList>
         <Typography
           sx={{
@@ -42,16 +30,23 @@ const AuthLeftSide = () => {
         </Typography>
       </ContainerList>
       <ContainerList>
-        <WhiteHole />
-        <WhiteHole />
-        <WhiteHole />
-        <WhiteHole />
+        <Box
+          sx={{
+            width: "100%",
+            height: "1px",
+            backgroundColor: "text.primary",
+          }}
+        ></Box>
       </ContainerList>
       <ContainerList>
-        <WhiteHole />
-        <WhiteHole />
-        <WhiteHole />
-        <WhiteHole />
+        <Typography
+          sx={{
+            margin: "10px auto",
+          }}
+          variant="h4"
+        >
+          Hoziroq boshlang
+        </Typography>
       </ContainerList>
     </Container>
   );

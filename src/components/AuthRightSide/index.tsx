@@ -26,7 +26,7 @@ const AuthRightSide = () => {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        margin: "0 10px",
+        margin: "0 50px",
       }}
     >
       <Button fullWidth variant="contained">
