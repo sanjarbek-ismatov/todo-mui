@@ -7,7 +7,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Auth from "./Auth";
+import Auth from "./pages/Auth";
 import { Provider } from "./context/theme";
 const root = createRoot(document.getElementById("root") as HTMLDivElement);
 function Index() {

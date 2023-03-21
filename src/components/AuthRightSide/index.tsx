@@ -1,6 +1,8 @@
 import { Box, Button, TextField } from "@mui/material";
 import styled from "styled-components";
 import { useFormik } from "formik";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebase";
 const SignInIcon = styled.img`
   border-radius: 30px;
   background-color: #fff;
@@ -10,13 +12,20 @@ const SignInIcon = styled.img`
 `;
 
 const AuthRightSide = () => {
+  const submitEmail = async () => {
+    await createUserWithEmailAndPassword(
+      auth,
+      "ismatovsanjarbek@yandex.ru",
+      "09122005isa"
+    ).then((data) => console.log(data.user));
+  };
   const { handleChange, handleSubmit, values } = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     onSubmit(value) {
-      console.log(value);
+      submitEmail();
     },
   });
   return (
@@ -64,7 +73,7 @@ const AuthRightSide = () => {
       >
         Yoki
       </Box>
-      <Button variant="contained" color="secondary">
+      <Button onClick={submitEmail} variant="contained" color="secondary">
         <SignInIcon src="https://cdn-icons-png.flaticon.com/512/25/25231.png" />{" "}
         Github orqali davom etish
       </Button>

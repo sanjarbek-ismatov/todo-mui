@@ -1,8 +1,9 @@
 import { Box, createTheme, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
-import Auth from "./Auth";
+import Auth from "./pages/Auth";
 import { IconButton } from "./components";
 import { useThemeContext } from "./context/theme";
+import Main from "./pages/Main";
 const App = () => {
   const { theme, toggleTheme } = useThemeContext();
   const darkTheme = createTheme({
@@ -26,7 +27,8 @@ const App = () => {
       >
         <IconButton />
         <Routes>
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/" element={true ? <Auth /> : <Main />} />
+          <Route path="*" element={<p>Not found</p>} />
         </Routes>
       </Box>
     </ThemeProvider>
