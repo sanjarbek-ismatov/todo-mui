@@ -10,44 +10,41 @@ const WhiteHole = styled.div`
 const Container = styled.div`
   margin: 0 50px 0 0;
 `;
-const ContainerList = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+
 const AuthLeftSide = () => {
   return (
     <Container>
-      <ContainerList>
+      <Box>
         <Typography
           sx={{
             fontWeight: "bold",
           }}
-          variant="h3"
+          variant="h2"
           gutterBottom
         >
-          TODOGA A'ZO BO'LING
+          ToDoga a'zo bo'ling
         </Typography>
-      </ContainerList>
-      <ContainerList>
+      </Box>
+      <Box>
         <Box
           sx={{
             width: "100%",
             height: "1px",
-            backgroundColor: "text.primary",
+            backgroundColor: "divider",
           }}
         ></Box>
-      </ContainerList>
-      <ContainerList>
+      </Box>
+      <Box>
         <Typography
           sx={{
             margin: "10px auto",
+            color: "text.secondary",
           }}
           variant="h4"
         >
           Hoziroq boshlang
         </Typography>
-      </ContainerList>
+      </Box>
     </Container>
   );
 };

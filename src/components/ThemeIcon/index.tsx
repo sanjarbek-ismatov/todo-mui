@@ -14,7 +14,12 @@ const Index = () => {
         justifyContent: "flex-end",
       }}
     >
-      <IconButton onClick={toggleTheme}>
+      <IconButton
+        sx={{
+          backgroundColor: "divider",
+        }}
+        onClick={toggleTheme}
+      >
         {theme === "light" ? <WbSunnyIcon /> : <ModeNightIcon />}
       </IconButton>
     </Box>
