@@ -1,8 +1,20 @@
-import { Box, Button, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  TextField,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  CircularProgress,
+  Typography,
+} from "@mui/material";
 import styled from "styled-components";
 import { useFormik } from "formik";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase";
+import { useState } from "react";
 const SignInIcon = styled.img`
   border-radius: 30px;
   background-color: #fff;
@@ -12,12 +24,23 @@ const SignInIcon = styled.img`
 `;
 
 const AuthRightSide = () => {
-  const submitEmail = async () => {
-    await createUserWithEmailAndPassword(
-      auth,
-      "ismatovsanjarbek@yandex.ru",
-      "09122005isa"
-    ).then((data) => console.log(data.user));
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("Biroz kuting. Yuklanmoqda...");
+  const submitEmail = async ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => {
+    await createUserWithEmailAndPassword(auth, email, password).then(
+      (data) => {
+        setMessage("Kirish bajarildi!");
+      },
+      (reason) => {
+        setMessage("Uzr nimadir xato!");
+      }
+    );
   };
   const { handleChange, handleSubmit, values } = useFormik({
     initialValues: {
@@ -25,7 +48,8 @@ const AuthRightSide = () => {
       password: "",
     },
     onSubmit(value) {
-      submitEmail();
+      setOpen(true);
+      submitEmail(value);
     },
   });
   return (
@@ -38,12 +62,36 @@ const AuthRightSide = () => {
         margin: "0 50px",
       }}
     >
+      <Dialog onClose={() => setOpen(false)} open={open}>
+        <DialogTitle>Hello</DialogTitle>
+        <DialogContent>
+          <DialogContentText
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              width: "550px",
+            }}
+          >
+            <Box sx={{ marginRight: "10px" }}>
+              <CircularProgress />
+            </Box>
+            <Typography>{message}</Typography>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>{/* <Button>Ok</Button> */}</DialogActions>
+      </Dialog>
       <Button fullWidth variant="contained">
         <SignInIcon src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" />
         Google orqali ro'yhatdan o'tish
       </Button>
       <br />
-      <form onSubmit={handleSubmit}>
+      <form
+        style={{
+          textAlign: "center",
+        }}
+        onSubmit={handleSubmit}
+      >
         <TextField
           fullWidth
           margin="normal"
@@ -53,6 +101,7 @@ const AuthRightSide = () => {
           value={values.email}
           onChange={handleChange}
           placeholder="Email"
+          required
           label="Email bilan boshlash"
         />
         <TextField
@@ -63,8 +112,18 @@ const AuthRightSide = () => {
           name="password"
           onChange={handleChange}
           label="Parol"
+          required
           placeholder="parol kiriting"
         />
+        <Button
+          sx={{
+            margin: "10px 5px",
+          }}
+          type="submit"
+          variant="outlined"
+        >
+          Boshlash
+        </Button>
       </form>
       <Box
         sx={{
@@ -73,7 +132,7 @@ const AuthRightSide = () => {
       >
         Yoki
       </Box>
-      <Button onClick={submitEmail} variant="contained" color="secondary">
+      <Button variant="contained" color="secondary">
         <SignInIcon src="https://cdn-icons-png.flaticon.com/512/25/25231.png" />{" "}
         Github orqali davom etish
       </Button>
