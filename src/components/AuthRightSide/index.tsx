@@ -13,8 +13,8 @@ import {
 import styled from "styled-components";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
-import {auth, db} from "../../../config/"
-import {signUpWithEmail} from '../../../helpers/signup'
+import {auth, db} from "../../config/"
+import {signUpWithEmail} from '../../helpers/signup'
 import { addDoc, collection } from "firebase/firestore";
 const SignInIcon = styled.img`
   border-radius: 30px;
@@ -27,6 +27,7 @@ const SignInIcon = styled.img`
 const AuthRightSide = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("Biroz kuting. Yuklanmoqda...");
+  const [failed, setFailed] = useState(false)
   const submitEmail = async ({
     email,
     password,
@@ -35,8 +36,8 @@ const AuthRightSide = () => {
     password: string;
   }) => {
     try{
-      await signUpWithEmail(email, password)
-   }
+     const status =  await signUpWithEmail(email, password)
+     }
 catch(ex){
 
 }
@@ -126,6 +127,7 @@ catch(ex){
         >
           Boshlash
         </Button>
+        {failed && <Typography variant="h1">Parolni unutdingizmi?</Typography>}
       </form>
       <Box
         sx={{

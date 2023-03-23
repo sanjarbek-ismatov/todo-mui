@@ -15,6 +15,6 @@ export async function signUpWithEmail(email: string, password: string){
 		console.log(ex)
 	}
 	finally{
-	signWithEmail(email, password)
+	const status =  await signWithEmail(email, password)
 }
 }
