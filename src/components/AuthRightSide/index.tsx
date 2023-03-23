@@ -12,9 +12,10 @@ import {
 } from "@mui/material";
 import styled from "styled-components";
 import { useFormik } from "formik";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {auth, db} from "../../../config/"
+import {signUpWithEmail} from '../../../helpers/signup'
+import { addDoc, collection } from "firebase/firestore";
 const SignInIcon = styled.img`
   border-radius: 30px;
   background-color: #fff;
@@ -33,14 +34,15 @@ const AuthRightSide = () => {
     email: string;
     password: string;
   }) => {
-    await createUserWithEmailAndPassword(auth, email, password).then(
-      (data) => {
-        setMessage("Kirish bajarildi!");
-      },
-      (reason) => {
-        setMessage("Uzr nimadir xato!");
-      }
-    );
+    try{
+      await signUpWithEmail(email, password)
+   }
+catch(ex){
+
+}
+   finally{
+    setOpen(false)
+   }
   };
   const { handleChange, handleSubmit, values } = useFormik({
     initialValues: {
