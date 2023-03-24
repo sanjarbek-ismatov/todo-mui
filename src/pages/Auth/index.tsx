@@ -1,4 +1,4 @@
-import { AuthLeftSide, AuthRightSide } from "../components";
+import { AuthLeftSide, AuthRightSide } from "./components";
 import { Box } from "@mui/material";
 function Auth() {
   return (

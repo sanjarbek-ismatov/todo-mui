@@ -13,9 +13,7 @@ import {
 import styled from "styled-components";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
-import {auth, db} from "../../config/"
-import {signUpWithEmail} from '../../helpers/signup'
-import { addDoc, collection } from "firebase/firestore";
+import { signUpWithEmail } from "../../../../helpers/signup";
 const SignInIcon = styled.img`
   border-radius: 30px;
   background-color: #fff;
@@ -27,7 +25,10 @@ const SignInIcon = styled.img`
 const AuthRightSide = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("Biroz kuting. Yuklanmoqda...");
-  const [failed, setFailed] = useState(false)
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    console.log(failed);
+  }, [failed]);
   const submitEmail = async ({
     email,
     password,
@@ -35,15 +36,14 @@ const AuthRightSide = () => {
     email: string;
     password: string;
   }) => {
-    try{
-     const status =  await signUpWithEmail(email, password)
-     }
-catch(ex){
-
-}
-   finally{
-    setOpen(false)
-   }
+    try {
+      signUpWithEmail(email, password).catch((err) => {
+        console.log(err);
+      });
+    } catch (ex) {
+    } finally {
+      setOpen(false);
+    }
   };
   const { handleChange, handleSubmit, values } = useFormik({
     initialValues: {
