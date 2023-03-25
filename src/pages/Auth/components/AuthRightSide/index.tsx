@@ -84,61 +84,19 @@ const AuthRightSide = () => {
         </DialogContent>
         <DialogActions>{/* <Button>Ok</Button> */}</DialogActions>
       </Dialog>
-      <Button fullWidth variant="contained">
+      <Button fullWidth variant="contained" color="info">
         <SignInIcon src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" />
         Google orqali ro'yhatdan o'tish
       </Button>
       <br />
-      <form
-        style={{
-          textAlign: "center",
-        }}
-        onSubmit={handleSubmit}
-      >
-        <TextField
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          type="email"
-          name="email"
-          value={values.email}
-          onChange={handleChange}
-          placeholder="Email"
-          required
-          label="Email bilan boshlash"
-        />
-        <TextField
-          fullWidth
-          variant="outlined"
-          value={values.password}
-          type="password"
-          name="password"
-          onChange={handleChange}
-          label="Parol"
-          required
-          placeholder="parol kiriting"
-        />
-        <Button
-          sx={{
-            margin: "10px 5px",
-          }}
-          type="submit"
-          variant="outlined"
-        >
-          Boshlash
-        </Button>
-        {failed && <Typography variant="h1">Parolni unutdingizmi?</Typography>}
-      </form>
-      <Box
-        sx={{
-          margin: "17px",
-        }}
-      >
-        Yoki
-      </Box>
-      <Button variant="contained" color="secondary">
+      <Button fullWidth variant="contained" color="secondary">
         <SignInIcon src="https://cdn-icons-png.flaticon.com/512/25/25231.png" />{" "}
         Github orqali davom etish
+      </Button>
+      <br />
+      <Button fullWidth variant="contained" color="primary">
+        <SignInIcon src="https://cdn-icons-png.flaticon.com/512/124/124010.png" />{" "}
+        FaceBook orqali davom etish
       </Button>
     </Box>
   );
