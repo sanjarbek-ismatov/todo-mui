@@ -14,10 +14,6 @@ import { auth } from "./config";
 import { useEffect } from "react";
 const root = createRoot(document.getElementById("root") as HTMLDivElement);
 function Index() {
-  const [user] = useAuthState(auth);
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
   return (
     <Router>
       <Provider>

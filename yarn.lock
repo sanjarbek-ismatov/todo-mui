@@ -1376,6 +1376,11 @@ escape-string-regexp@^4.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
+exportable@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/exportable/-/exportable-0.1.2.tgz#4b3faeba3bb2b4d649b0c5b6de0b3e451c44cef4"
+  integrity sha512-ddk9wcKhp49E3makcyNTZ4xVVz3qIfS/euIriKPaFB7k8YKNq7g1yP5vGo8WvyLEPD3ACbxKLAElsZ10BYDPWA==
+
 faye-websocket@0.11.4:
   version "0.11.4"
   resolved "https://registry.yarnpkg.com/faye-websocket/-/faye-websocket-0.11.4.tgz#7f0d9275cfdd86a1c963dc8b65fcc451edcbb1da"
@@ -1707,6 +1712,13 @@ protobufjs@^7.0.0:
     "@types/node" ">=13.7.0"
     long "^5.0.0"
 
+react-componentor@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-componentor/-/react-componentor-1.0.0.tgz#b2b726dfc754acbc2cb5a1d66abce3105571acb0"
+  integrity sha512-xSkdEvKxY90h3STt4+nztpXx2DaLuAd6iRa1Rhkk26AUBeGp576/5D1YIcKUw56Rf2BBc76nSn2GnBElvUXu+w==
+  dependencies:
+    reactular "^0.1.2"
+
 react-dom@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
@@ -1771,6 +1783,13 @@ react@^18.2.0:
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
+
+reactular@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/reactular/-/reactular-0.1.2.tgz#492377847e0edef1f0a41f6e150f62cece049894"
+  integrity sha512-3NKG4unny5/PVBQ7fKkBFIYTRjBhcaeamL3BvqTAxvl4jrjXBMwp0gFmPIlVuFoN9SGqeQ63eNlt6sTwcB9LOw==
+  dependencies:
+    exportable "0.1.2"
 
 regenerator-runtime@^0.13.11:
   version "0.13.11"

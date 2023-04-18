@@ -9,7 +9,9 @@ import {
   Typography,
 } from "@mui/material";
 import styled from "styled-components";
+import { signInWithPopup } from "firebase/auth";
 import { useState } from "react";
+import { auth, googleAuthProvider } from "../../../../config";
 const SignInIcon = styled.img`
   border-radius: 30px;
   background-color: #fff;
@@ -21,6 +23,10 @@ const SignInIcon = styled.img`
 const AuthRightSide = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("Biroz kuting. Yuklanmoqda...");
+  const handleSign = () => {
+    setOpen(true)
+    signInWithPopup(auth, googleAuthProvider).then(user => setOpen)
+  };
   return (
     <Box
       sx={{
@@ -49,7 +55,7 @@ const AuthRightSide = () => {
           </DialogContentText>
         </DialogContent>
       </Dialog>
-      <Button fullWidth variant="contained" color="info">
+      <Button onClick={handleSign} fullWidth variant="contained" color="info">
         <SignInIcon src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" />
         Google orqali ro'yhatdan o'tish
       </Button>
