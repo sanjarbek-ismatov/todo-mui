@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {
-  Container,
-  TextField,
-  Button,
-  Typography,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from "@mui/material";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Checkbox from "@mui/material/Checkbox";
+import IconButton from "@mui/material/IconButton";
+import CommentIcon from "@mui/icons-material/Comment";
 import { db } from "../../config";
 import {
   DocumentData,
@@ -27,37 +26,29 @@ const Main = () => {
       setExpanded(isExpanded ? panel : false);
     };
 
-  const [data, setData] = useState<QuerySnapshot<DocumentData>>();
+  const [data, setData] = useState<DocumentData[]>([]);
   useEffect(() => {
-    getData().then((data) => setData(data));
+    getData().then((data) => setData(data.docs.map((e) => e.data())));
   }, []);
   return (
-    <Container>
-      <TextField label="Bugun nima ish qilmoqchisiz?" fullWidth />
-      <Button variant="contained">Ro'yhatga qo'shish</Button>
-
-      {data?.docs.map((e) => (
-        <>
-          <Accordion
-            expanded={expanded === "panel1"}
-            onChange={handleChange("panel1")}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header"
-            >
-              <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                {e.data().title}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>{e.data().description}</Typography>
-            </AccordionDetails>
-          </Accordion>
-        </>
+    <List>
+      {data?.map((e, i) => (
+        <ListItem
+          key={i}
+          secondaryAction={
+            <IconButton edge="end" aria-label="comments">
+              <CommentIcon />
+            </IconButton>
+          }
+          disablePadding
+        >
+          <ListItemButton role={undefined} dense>
+            <ListItemIcon></ListItemIcon>
+            <ListItemText>{e.title}</ListItemText>
+          </ListItemButton>
+        </ListItem>
       ))}
-    </Container>
+    </List>
   );
 };
 
